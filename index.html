@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Colorful Names!</title>
+</head>
+<body>
+    <div>
+        <span>Hi,</span><input spellcheck="false" type="text" id="inp" disabled/>
+    </div>
+</body>
+<script>
+    var name_list = ["Makeyla", "Tom", "Marie", "Lucca", "Cherry", "Robert", "Akira", "Daniel", "Gabriella"];
+
+    var colors = ["#6B9E77", "#F7A1C6", "#F48366", "#BFDBF7", "#F8FF70", "#B6A4B7", "#E2787C", "#C7FFED", "#E6AA68"];
+
+    const inp = document.getElementById("inp");
+
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function names(){
+        while(true){
+
+            for(let i = 0; i < name_list.length; i++){
+
+                inp.style.color = colors[Math.floor(Math.random() * colors.length)];
+
+                for(let j = 0; j <name_list[i].length; j++){
+
+                    inp.value += name_list[i][j];
+                    await sleep(100);
+                }
+
+                await sleep(500);
+                inp.value = "";
+            }
+        }
+    }
+    names();
+</script>
+</html>
